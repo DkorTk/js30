@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+</head>
+<body>
+
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+
+  <style>
+    html {
+      background: #018DED url(https://unsplash.it/1500/1000?image=1077&blur=5);
+      background-size: cover;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border: 20px solid white;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+
+    .hand {
+      width: 50%;
+      height: 6px;
+      position: absolute;
+      top: 50%;
+      transition: all .05s;
+      transition-timing-function: cubic-bezier(0.42, 0, 0.31, 1.76);
+      transform: rotate(90deg);
+      transform-origin: 100%;
+    }
+
+    .second-hand {
+      background: white;
+    }
+    .min-hand {
+      background: yellow;
+      width: 40%;
+      right: 50%;
+    }
+    .hour-hand {
+      background: pink;
+      width: 30%;
+      right: 50%;
+    }
+
+  </style>
+
+  
+  <script>
+    
+      //document操作
+      const secondTransfrom = document.querySelector('.second-hand');
+      const minTransfrom = document.querySelector('.min-hand');
+      const hourTransfrom = document.querySelector('.hour-hand');
+      function setDate() {
+        //获取时间
+        const date = new Date();
+
+        //获取秒
+        const secondDate = date.getSeconds();
+        //旋转角度，360度除60秒，1秒6度
+        const secondDegree = secondDate*6;
+        //将旋转角度加入css
+        secondTransfrom.style.transform = `rotate(${secondDegree+90}deg)`;
+        
+        //获取分
+        const minDate = date.getMinutes();
+        //旋转角度，分针转动角度与分和秒有关
+        const minDegree = minDate*6+(secondDate/60)*6 ;
+        minTransfrom.style.transform = `rotate(${minDegree+90}deg)`;
+
+        //获取时
+        const hourDate = date.getHours();
+        //旋转角度，时针转动角度与时，分和秒有关
+        const hourDegree = hourDate*30+(minDate/60)*30+(secondDate/3600)*30;
+        hourTransfrom.style.transform = `rotate(${hourDegree+90}deg)`;
+
+        //控制台输出时间
+        console.log(`${hourDate} 时 ${minDate} 分 ${secondDate} 秒`);
+      }
+
+      //为了防止刷新时停顿1秒
+      setDate();
+
+      //间隔1秒执行setDate函数
+      setInterval(setDate, 1000);
+
+      
+  </script>
+</body>
+</html>
