@@ -23,4 +23,4 @@ index-START.html 大家在这个文件进行编写js代码，实现鼓打击效�
 		+ 方法二：参考开源作者代码
 #### 效果图
 ---
-![](https://dkblog.oss-cn-shenzhen.aliyuncs.com/img/js30_day01.jpg)
+![](https://dkblog.oss-cn-shenzhen.aliyuncs.com/img/js30_day1.jpg)
