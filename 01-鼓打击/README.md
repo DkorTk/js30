@@ -21,7 +21,6 @@ index-START.html 大家在这个文件进行编写js代码，实现鼓打击效�
 	+ 分为方法一和方法二
 		+ 方法一：解决了长按按键会使点击效果无法消失
 		+ 方法二：参考开源作者代码
-
 #### 效果图
 ---
 ![](https://dkblog.oss-cn-shenzhen.aliyuncs.com/img/js30_day01.jpg)
