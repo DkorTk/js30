@@ -13,3 +13,9 @@
 ***day6：实时搜索列表***
 
 ***day7：数组操作2***
+
+***day8：Canvas***
+
+***day9：DevTool技巧***
+
+***day10：按住shift多选checkbox***
