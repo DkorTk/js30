@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+</head>
+<body>
+
+  <script>
+   // 1.String类型的变量
+   let name = 'ldk';
+    let name2 = 'ldk2';
+    console.log(name, name2);
+    name = '🌟';
+    console.log(name, name2);
+
+    let age = 23;
+    let age2 = age;
+    console.log(age, age2);
+    age2 = 34;
+    console.log(age, age2);
+
+    // 2.数组类型的变量
+    
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+    //copy引用
+    const team = players;
+    team[3] = '❤';
+    //拷贝
+    const team2 = players.slice();
+    team2[3] = '💑';
+
+    const team3 = Array.from(players);
+    team3[3] = '💑';
+
+    const team4 = [...players];
+    team4[3] = '💑';
+
+    const team5 = [].concat(players);
+    team5[3] = '💑';
+
+    // 3.对象
+    //copy引用
+    const person = {
+      name: 'Wes Bos',
+      age: 80
+    };
+
+    const dev = person;
+    // dev.name = 'dk';
+
+    //浅拷贝
+    const dev2 = Object.assign({}, person, {name:'dk'});
+
+    const dev3 = {...person};
+    dev3.name = 'dk';
+
+    //浅拷贝
+    const author = {
+      name : '123',
+      social : {
+        wechat : 'dk'
+      }
+    }
+
+    //au2复制了name，复制了social的引用
+    // const au2 = Object.assign({}, author);
+    // au2.name = '💑';
+    // au2.social.wechat = 'dkdkdk';
+
+    //au2复制了name，复制了social
+    const au3 = JSON.parse(JSON.stringify(author)); 
+    au3.name = '💑';
+    au3.social.wechat = 'dkdkdk';
+  </script>
+
+</body>
+</html>
