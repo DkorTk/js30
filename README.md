@@ -49,3 +49,5 @@
 ***day23：javaScript事件***
 
 ***day24：会吸附的下拉菜单***
+
+***day25：javaScript定时器***
